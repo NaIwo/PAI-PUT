@@ -1,0 +1,28 @@
+﻿@{ 
+    var rules = new List<string>();
+    if (Session["rules"] != null)
+    {
+        rules = rules.Concat((List<string>)Session["rules"]).ToList();
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <ol>
+        @foreach (var rule in rules)
+        {
+            <li>Rule: @rule</li>
+        }
+    </ol>
+
+    <form action="~/RulesSession.cshtml" method="POST">
+        <input type="text" name="rule" />
+        <input type="submit" />
+    </form>
+</body>
+</html>
